@@ -13,17 +13,17 @@
     <!-- Alert Card Template -->
     <template id="alert-card-template">
       <div
-        class="alert-card w-full h-full bg-white flex flex-col overflow-y-auto"
+        class="w-full h-full bg-white flex flex-col overflow-y-auto shadow-[0_8px_32px_rgba(0,0,0,0.12),0_2px_8px_rgba(0,0,0,0.08)]"
       >
         <div id="status-banner-container"></div>
         <div id="header-row-container"></div>
         <h3
           id="headline"
-          class="font-extrabold leading-tight flex-shrink-0 headline-text text-gray-900 mx-[5vw] mb-[1.5vh]"
+          class="font-extrabold leading-[1.2] tracking-[-0.01em] flex-shrink-0 text-[clamp(1.5rem,3.5vmin,7rem)] text-gray-900 mx-[5vw] mb-[1.5vh]"
         ></h3>
         <p
           id="description"
-          class="font-semibold leading-snug body-text text-gray-800 mx-[5vw] mb-[2vh]"
+          class="font-semibold leading-[1.35] text-[clamp(1.125rem,2.5vmin,5rem)] text-gray-800 mx-[5vw] mb-[2vh]"
         ></p>
         <div id="instruction-container"></div>
         <div id="resources-container"></div>
@@ -33,7 +33,7 @@
     <!-- Status Banner Template -->
     <template id="status-banner-template">
       <div
-        class="w-full text-center font-black uppercase tracking-[0.15em] flex-shrink-0 status-stripe-pattern status-banner-text py-[2.5vh] px-[4vw] text-white"
+        class="w-full text-center font-black uppercase tracking-[0.15em] flex-shrink-0 status-stripe-pattern py-[2.5vh] px-[4vw] text-white text-[clamp(1.25rem,3.5vmin,6rem)] leading-[1.1] [text-shadow:0_2px_4px_rgba(0,0,0,0.2)]"
       ></div>
     </template>
 
@@ -43,10 +43,10 @@
         class="flex items-center justify-between gap-[2vw] mx-[5vw] mt-[2vh] mb-[1.5vh]"
       >
         <h2
-          class="text-red-600 font-black uppercase leading-none event-title-text"
+          class="text-red-600 font-black uppercase leading-none text-[clamp(2rem,5vmin,10rem)] tracking-[-0.02em] [text-shadow:0_2px_8px_rgba(220,38,38,0.15)] min-[1920px]:[@media(min-height:1080px)]:text-[clamp(3rem,6vmin,12rem)] min-[3840px]:[@media(min-height:2160px)]:text-[clamp(4rem,6vmin,12rem)]"
         ></h2>
         <div
-          class="severity-badge inline-block text-white rounded-xl font-black uppercase tracking-wider flex-shrink-0 severity-badge-text px-[4vw] py-[2vh]"
+          class="severity-badge inline-block text-white rounded-xl font-black uppercase tracking-wider flex-shrink-0 px-[4vw] py-[2vh] text-[clamp(1rem,2vmin,4rem)] leading-[1.1] [text-shadow:0_1px_2px_rgba(0,0,0,0.15)] shadow-[0_4px_12px_rgba(249,115,22,0.25)] bg-[linear-gradient(135deg,rgb(249,115,22)_0%,rgb(234,88,12)_100%)]"
         ></div>
       </div>
     </template>
@@ -54,13 +54,15 @@
     <!-- Instruction Box Template -->
     <template id="instruction-box-template">
       <div
-        class="instruction-box rounded-xl flex-shrink-0 px-[4vw] py-[2.5vh] mx-[5vw] mb-[2vh]"
+        class="rounded-xl flex-shrink-0 px-[4vw] py-[2.5vh] mx-[5vw] mb-[2vh] shadow-[inset_4px_0_0_0_rgb(234,179,8),0_4px_12px_rgba(0,0,0,0.05)] backdrop-blur-[10px] bg-[linear-gradient(135deg,rgb(254,249,195)_0%,rgb(254,243,199)_100%)]"
       ></div>
     </template>
 
     <!-- Instruction List Template -->
     <template id="instruction-list-template">
-      <ul class="instruction-text leading-snug text-gray-900"></ul>
+      <ul
+        class="leading-[1.4] text-[clamp(1.25rem,3vmin,6rem)] min-[1920px]:[@media(min-height:1080px)]:text-[clamp(2rem,3.5vmin,7rem)] min-[3840px]:[@media(min-height:2160px)]:text-[clamp(2.5rem,3.5vmin,7rem)] text-gray-900"
+      ></ul>
     </template>
 
     <!-- Instruction List Item Template -->
@@ -74,7 +76,7 @@
     <!-- Instruction Paragraph Template -->
     <template id="instruction-paragraph-template">
       <p
-        class="instruction-text font-extrabold leading-snug whitespace-pre-line text-gray-900"
+        class="font-extrabold leading-[1.4] whitespace-pre-line text-[clamp(1.25rem,3vmin,6rem)] min-[1920px]:[@media(min-height:1080px)]:text-[clamp(2rem,3.5vmin,7rem)] min-[3840px]:[@media(min-height:2160px)]:text-[clamp(2.5rem,3.5vmin,7rem)] text-gray-900"
       ></p>
     </template>
 
@@ -91,17 +93,19 @@
     <!-- NWS Forecast Content Template (with preamble) -->
     <template id="nws-forecast-template">
       <div
-        class="nws-content font-semibold leading-snug body-text text-gray-800 mx-[5vw] mb-[2vh]"
+        class="nws-content font-semibold leading-[1.35] text-[clamp(1.125rem,2.5vmin,5rem)] text-gray-800 mx-[5vw] mb-[2vh]"
       >
-        <p class="nws-preamble"></p>
-        <ul class="nws-forecast-list"></ul>
+        <p class="nws-preamble mb-[1.5vh] leading-[1.4]"></p>
+        <ul class="nws-forecast-list list-none p-0 m-0"></ul>
       </div>
     </template>
 
     <!-- NWS Forecast List Item Template -->
     <template id="nws-forecast-item-template">
-      <li>
-        <strong class="period-label"></strong>
+      <li
+        class="relative pl-[3vw] mb-[1vh] before:content-['•'] before:absolute before:left-0 before:text-[rgb(234,88,12)] before:font-black"
+      >
+        <strong class="period-label text-[rgb(30,64,175)] font-extrabold"></strong>
         <span class="period-content"></span>
       </li>
     </template>
@@ -109,14 +113,16 @@
     <!-- NWS WWWI Content Template -->
     <template id="nws-wwwi-template">
       <ul
-        class="nws-wwwi-list font-semibold leading-snug body-text text-gray-800 mx-[5vw] mb-[2vh]"
+        class="nws-wwwi-list font-semibold leading-[1.35] text-[clamp(1.125rem,2.5vmin,5rem)] text-gray-800 mx-[5vw] mb-[2vh] list-none p-0 m-0"
       ></ul>
     </template>
 
     <!-- NWS WWWI List Item Template -->
     <template id="nws-wwwi-item-template">
-      <li>
-        <strong class="wwwi-label"></strong>
+      <li
+        class="relative pl-[3vw] mb-[1vh] before:content-['•'] before:absolute before:left-0 before:text-[rgb(234,88,12)] before:font-black"
+      >
+        <strong class="wwwi-label text-[rgb(30,64,175)] font-extrabold"></strong>
         <span class="wwwi-content"></span>
       </li>
     </template>
