@@ -1,29 +1,19 @@
 import '@screenly/edge-apps/test'
 import { describe, it, expect, beforeEach, mock } from 'bun:test'
+import { Hardware, edgeAppsMock } from './test-helpers/edge-apps-mock'
 import { CAPFetcher } from './fetcher'
 
 // Mock the @screenly/edge-apps module
 const mockGetCorsProxyUrl = mock()
 const mockGetHardware = mock()
 
-// Hardware enum mock
-const Hardware = {
-  Anywhere: 'Anywhere',
-  RaspberryPi: 'RaspberryPi',
-  ScreenlyPlayerMax: 'ScreenlyPlayerMax',
-  Unknown: 'Unknown',
-}
-
-mock.module('@screenly/edge-apps', () => ({
-  getCorsProxyUrl: () => mockGetCorsProxyUrl(),
-  getHardware: () => mockGetHardware(),
-  Hardware,
-  setupTheme: () => {},
-  signalReady: () => {},
-  getMetadata: () => ({}),
-  getTags: () => [],
-  getSettings: () => ({}),
-}))
+mock.module(
+  '@screenly/edge-apps',
+  edgeAppsMock({
+    getCorsProxyUrl: () => mockGetCorsProxyUrl(),
+    getHardware: () => mockGetHardware(),
+  }),
+)
 
 // Mock localStorage
 const localStorageMock = (() => {
