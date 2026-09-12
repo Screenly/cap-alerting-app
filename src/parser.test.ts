@@ -1,6 +1,7 @@
 /* eslint-disable max-lines-per-function */
 
 import { describe, it, expect, mock } from 'bun:test'
+import { edgeAppsMock } from './test-helpers/edge-apps-mock'
 
 const mockGetSettings = mock()
 const mockGetMetadata = mock()
@@ -9,14 +10,17 @@ const mockSetupTheme = mock()
 const mockSignalReady = mock()
 const mockGetTags = mock()
 
-mock.module('@screenly/edge-apps', () => ({
-  getSettings: () => mockGetSettings(),
-  getMetadata: () => mockGetMetadata(),
-  getCorsProxyUrl: () => mockGetCorsProxyUrl(),
-  setupTheme: () => mockSetupTheme(),
-  signalReady: () => mockSignalReady(),
-  getTags: () => mockGetTags(),
-}))
+mock.module(
+  '@screenly/edge-apps',
+  edgeAppsMock({
+    getSettings: () => mockGetSettings(),
+    getMetadata: () => mockGetMetadata(),
+    getCorsProxyUrl: () => mockGetCorsProxyUrl(),
+    setupTheme: () => mockSetupTheme(),
+    signalReady: () => mockSignalReady(),
+    getTags: () => mockGetTags(),
+  }),
+)
 
 import { parseCap } from './parser'
 import { XMLParser } from 'fast-xml-parser'
