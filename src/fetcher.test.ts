@@ -1,6 +1,5 @@
 import '@screenly/edge-apps/test'
 import { describe, it, expect, beforeEach, mock } from 'bun:test'
-import { CAPFetcher } from './fetcher'
 
 // Mock the @screenly/edge-apps module
 const mockGetCorsProxyUrl = mock()
@@ -24,6 +23,8 @@ mock.module('@screenly/edge-apps', () => ({
   getTags: () => [],
   getSettings: () => ({}),
 }))
+
+const { CAPFetcher } = await import('./fetcher')
 
 // Mock localStorage
 const localStorageMock = (() => {
