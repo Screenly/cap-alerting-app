@@ -1,4 +1,8 @@
+[![Version](https://img.shields.io/github/v/release/Screenly/cap-alerting-app)](https://github.com/Screenly/cap-alerting-app/releases/latest)
+
 # Screenly CAP Alerting App
+
+![CAP Alerting App Preview](/screenshots/1920x1080.webp)
 
 Display Common Alerting Protocol (CAP) emergency alerts on Screenly digital signage screens. Designed to work with Screenly's [Playlist API](https://developer.screenly.io/api_v4/#update-a-playlist) (`PATCH /v4/playlists`) to automatically interrupt regular content when alerts are active by setting the playlist priority.
 
