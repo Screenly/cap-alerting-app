@@ -16,6 +16,15 @@ mock.module('@screenly/edge-apps', () => ({
   setupTheme: () => mockSetupTheme(),
   signalReady: () => mockSignalReady(),
   getTags: () => mockGetTags(),
+  // fetcher.ts imports these; bun keeps the last module mock across test
+  // files, so every mock must provide them or fetcher.test.ts fails to load.
+  getHardware: () => 'Unknown',
+  Hardware: {
+    Anywhere: 'Anywhere',
+    RaspberryPi: 'RaspberryPi',
+    ScreenlyPlayerMax: 'ScreenlyPlayerMax',
+    Unknown: 'Unknown',
+  },
 }))
 
 import { parseCap } from './parser'
