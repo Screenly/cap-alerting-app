@@ -1,19 +1,14 @@
 import { describe, it, expect, mock } from 'bun:test'
+import { edgeAppsMock } from './test-helpers/edge-apps-mock'
 
 // Mock the @screenly/edge-apps module
-mock.module('@screenly/edge-apps', () => ({
-  getCorsProxyUrl: () => 'http://localhost:8080',
-  isAnywhereScreen: () => false,
-  // fetcher.ts imports these; bun keeps the last module mock across test
-  // files, so every mock must provide them or fetcher.test.ts fails to load.
-  getHardware: () => 'Unknown',
-  Hardware: {
-    Anywhere: 'Anywhere',
-    RaspberryPi: 'RaspberryPi',
-    ScreenlyPlayerMax: 'ScreenlyPlayerMax',
-    Unknown: 'Unknown',
-  },
-}))
+mock.module(
+  '@screenly/edge-apps',
+  edgeAppsMock({
+    getCorsProxyUrl: () => 'http://localhost:8080',
+    isAnywhereScreen: () => false,
+  }),
+)
 
 import '@screenly/edge-apps/test'
 import { getNearestExit, splitIntoSentences, proxyUrl } from './utils'
