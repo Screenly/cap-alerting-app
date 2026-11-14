@@ -1,4 +1,8 @@
+[![Version](https://img.shields.io/github/v/release/Screenly/cap-alerting-app)](https://github.com/Screenly/cap-alerting-app/releases/latest)
+
 # Screenly CAP Alerting App
+
+![CAP Alerting App Preview](/screenshots/1920x1080.webp)
 
 Display Common Alerting Protocol (CAP) emergency alerts on Screenly digital signage screens. Designed to work with Screenly's [Playlist API](https://developer.screenly.io/api_v4/#update-a-playlist) (`PATCH /v4/playlists`) to automatically interrupt regular content when alerts are active by setting the playlist priority.
 
@@ -16,6 +20,22 @@ Create and deploy the Edge App:
 screenly edge-app create --name my-cap-alerting --in-place
 bun run deploy
 screenly edge-app instance create
+```
+
+### Releasing
+
+Pushes to `main` start a stage deploy, which waits for approval. To release to production, tag a commit on `main` and push the tag (the workflow refuses tags not on `main`); the production deploy also waits for approval:
+
+```bash
+git checkout main && git pull
+git tag v26.10.0
+git push origin v26.10.0
+```
+
+Then publish a GitHub Release whose notes list the pull requests merged since the previous release. Add `--draft` to review the notes before publishing:
+
+```bash
+gh release create v26.10.0 --verify-tag --generate-notes --title v26.10.0
 ```
 
 ## Configuration
